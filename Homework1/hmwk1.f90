@@ -72,7 +72,7 @@ MODULE  hmwks
         REAL(DP) :: lower, upper, mid, sens
         REAL(DP) :: eps=100
 
-        print *, "HOMEWORK 3: Solving sin2-2x=0"
+        print *, "HOMEWORK 3: Solving sin(2*Pi*x)-2x=0"
         write(*,*) "Starting Lower Bound: "
         read (*,*) lower
         write(*,*) "Starting Upper Bound: "
@@ -82,7 +82,7 @@ MODULE  hmwks
 
         DO WHILE ((ABS(eps) >= sens) .AND. (counter < MAXCOUNT))
             mid = (upper+lower)/2
-            eps = sin(2.0)-2*mid
+            eps = sin(2.0*PI_D*mid)-2*mid
 
             IF (eps .GT. 0.0D0) THEN
                 lower = mid
@@ -106,7 +106,6 @@ end module hmwks
 program main
     use hmwks
     implicit none
-
     call H2()
     call H3()
 end program main
